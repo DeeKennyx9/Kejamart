@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="web_make_directories" basedir=".">
+      <target name="web.make.dir">
+        <mkdir dir="${absolute.web.build.classes.dir}"/>
+        <mkdir dir="${absolute.web.build.webroot.dir}"/>
+        <mkdir dir="${absolute.web.dist.dir}"/>
+    </target>
+</project>

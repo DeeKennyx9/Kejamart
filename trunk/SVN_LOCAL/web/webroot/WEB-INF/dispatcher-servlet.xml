@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd 
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">        
+          
+   <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+             <props merge="true">
+                <prop key="/**/*.html">pathController</prop>
+                <prop key="/register.html">register</prop>                
+                <prop key="/login.html">login</prop>
+                <prop key="/loginx.html">login</prop>
+                <prop key="/profile.html">prof</prop>
+                <prop key="/logout.html">logo</prop>
+                <prop key="/requests.html">req</prop>
+                <prop key="/requests2.html">req</prop>
+                <prop key="/requests3.html">req</prop>
+                <prop key="/deleterequest.html">delreq</prop>
+                <prop key="/property.html">prop</prop>
+                <prop key="/property2.html">prop</prop>
+                <prop key="/property3.html">prop</prop>
+                <prop key="/viewproperty.html">viewprop</prop>
+                <prop key="/editproperty.html">edprop</prop>
+                <prop key="/editproperty2.html">edprop</prop>
+                <prop key="/editproperty3.html">edprop</prop>
+                <prop key="/deleteproperty.html">delprop</prop>
+                <prop key="/propertypics.html">propic</prop>
+                <prop key="/propertymain.html">propmain</prop>
+                <prop key="/propertylogo.html">logos</prop>
+                <prop key="/editpics.html">edpic</prop>
+                <prop key="/deletepics.html">delpic</prop> 
+                <prop key="/allproperty.html">alprop</prop>
+                <prop key="/propertylist.html">proplist</prop>
+                <prop key="/publishprops.html">public</prop>                 
+                <prop key="/addprofile.html">addp</prop> 
+                <prop key="/editprofile.html">editp</prop>
+                <prop key="/changepassword.html">changepass</prop> 
+                <prop key="/allprofiles.html">allp</prop> 
+                <prop key="/countylist.html">cntlist</prop> 
+                <prop key="/newproperty.html">propnew</prop>
+                <prop key="/newproperty2.html">propnew</prop>
+                <prop key="/newproperty3.html">propnew</prop>                
+                <prop key="/manageproperty.html">propmg</prop>
+                <prop key="/manageproperty2.html">propmg</prop>
+                <prop key="/manageproperty3.html">propmg</prop>
+                <prop key="/notifications.html">nots</prop>
+                <prop key="/notification.html">nots</prop>
+                <prop key="/adverts.html">adv</prop>
+                <prop key="/search.html">searchx</prop>
+                <prop key="/search2.html">searchx</prop>
+                <prop key="/search3.html">searchx</prop>
+                <prop key="/search4.html">searchx</prop>
+                <prop key="/searchc.html">searchx</prop>
+                <prop key="/contact.html">contact</prop>
+                <prop key="/contactx.html">contact</prop>
+                <prop key="/viewdetails.html">viewdetails</prop>
+                <prop key="/resources.html">resource</prop>
+                <prop key="/features.html">feat</prop>
+               </props>
+        </property>
+    </bean>   
+    
+<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+
+<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    <property name="useSuffixPatternMatch" value="false"/>
+</bean>       
+    
+<bean id="webMvcConfigurer" class="kejamart.helper.WebMvcConfigurer"/>    
+
+<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/> 
+
+<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+<property name="useDefaultSuffixPattern" value="false" />
+</bean>
+
+<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+
+<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    <property name="messageConverters">
+        <list>
+            <ref bean="jacksonMessageConverter"/>
+        </list>
+    </property>
+</bean>
+
+ <!-- ======================== Engines ============================== -->
+
+<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="kenny.oduor@gmail.com" />
+		<property name="password" value="diaspora9" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.host">smtp.gmail.com</prop>
+				<prop key="mail.smtp.port">587</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">false</prop>
+
+				<prop key="mail.smtp.socketFactory.port">
+					587
+				</prop>
+				<prop key="mail.smtp.socketFactory.class">
+					javax.net.ssl.SSLSocketFactory
+				</prop>
+				<prop key="mail.smtp.socketFactory.fallback">
+					false
+				</prop>
+			</props>
+		</property>		
+</bean>
+
+ <!-- ======================== Application Controllers ============================== -->
+
+    <!-- Default Login Form -->
+    <bean id="login" class="kejamart.controller.main.LoginController">
+     <property name="logDAO" ref="LogDAO"/>
+     <property name="messagesDAO" ref="MessagesDAO"/>
+    </bean>
+    
+    <!-- Default Logout Form -->
+    <bean id="logo" class="kejamart.controller.main.LogoutController">
+    </bean>  
+    
+    <!-- Contact Admin Form -->    
+    <bean id="contact" class="kejamart.controller.main.ContactUs">
+    <property name="mailConfigDAO" ref="MailConfigDAO"/>
+    <property name="mailSender" ref="mailSender"/>
+    </bean>    
+    
+    <!-- Create Profile Form -->    
+    <bean id="register" class="kejamart.controller.profile.RegisterController">
+    <property name="profileDAO" ref="ProfileDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/>
+    <property name="mailSender" ref="mailSender"/>
+    </bean> 
+    
+    <!-- Edit Profile Form -->    
+    <bean id="prof" class="kejamart.controller.profile.EditProfileController">
+    <property name="profileDAO" ref="ProfileDAO"/>
+    </bean> 
+    
+    <!-- Change Password Form -->    
+    <bean id="changepass" class="kejamart.controller.profile.ChangePassword">
+    <property name="profileDAO" ref="ProfileDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/>
+    <property name="mailSender" ref="mailSender"/>
+    </bean>    
+    
+    <!-- Add New Profile Form -->    
+    <bean id="addp" class="kejamart.controller.profile.AddProfilesController">
+    <property name="profileDAO" ref="ProfileDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/>
+    </bean> 
+    
+    <!-- Edit All Profiles Form -->    
+    <bean id="editp" class="kejamart.controller.profile.EditAllProfilesController">
+    <property name="profileDAO" ref="ProfileDAO"/>
+    </bean>  
+    
+    <!-- List All Profiles Form -->    
+    <bean id="allp" class="kejamart.controller.profile.AllProfilesController">
+    <property name="profileDAO" ref="ProfileDAO"/>
+    </bean> 
+        
+    <!-- Add Request Form -->    
+    <bean id="req" class="kejamart.controller.alert.AddRequestController">
+    <property name="alertsDAO" ref="AlertsDAO"/>
+    <property name="countriesDAO" ref="CountriesDAO"/>
+    <property name="countiesDAO" ref="CountiesDAO"/>
+    <property name="locationsDAO" ref="LocationsDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/>
+    <property name="rangeAmountDAO" ref="RangeAmountDAO"/> 
+    </bean> 
+    
+    <!-- Delete Request Form -->    
+    <bean id="delreq" class="kejamart.controller.alert.DeleteRequestController">
+    <property name="alertsDAO" ref="AlertsDAO"/>
+    </bean> 
+        
+    <!-- List All Property Form -->    
+    <bean id="alprop" class="kejamart.controller.property.AllPropertyController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    </bean>     
+    
+    <!-- Add / List Property Form -->    
+    <bean id="prop" class="kejamart.controller.property.AddPropertyController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    <property name="countriesDAO" ref="CountriesDAO"/>
+    <property name="countiesDAO" ref="CountiesDAO"/>
+    <property name="locationsDAO" ref="LocationsDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/>
+    <property name="alertsDAO" ref="AlertsDAO"/>
+    <property name="rangeAmountDAO" ref="RangeAmountDAO"/>    
+    </bean> 
+    
+    <!-- Create New Property Form - Public -->    
+    <bean id="propnew" class="kejamart.controller.property.NewPropertyController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    <property name="countriesDAO" ref="CountriesDAO"/>
+    <property name="countiesDAO" ref="CountiesDAO"/>
+    <property name="locationsDAO" ref="LocationsDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/>
+    <property name="rangeAmountDAO" ref="RangeAmountDAO"/>     
+    </bean>    
+    
+    <!-- Manage All Property Form -->    
+    <bean id="propmg" class="kejamart.controller.property.ManagePropertyController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    <property name="countriesDAO" ref="CountriesDAO"/>
+    <property name="countiesDAO" ref="CountiesDAO"/>
+    <property name="locationsDAO" ref="LocationsDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/>
+    <property name="rangeAmountDAO" ref="RangeAmountDAO"/>     
+    </bean>
+    
+    <!-- Edit Property Form -->
+    <bean id="edprop" class="kejamart.controller.property.EditPropertyController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    <property name="countriesDAO" ref="CountriesDAO"/>
+    <property name="countiesDAO" ref="CountiesDAO"/>
+    <property name="locationsDAO" ref="LocationsDAO"/>
+    <property name="rangeAmountDAO" ref="RangeAmountDAO"/> 
+    </bean>   
+    
+     <!-- Edit Property Form -->
+    <bean id="viewprop" class="kejamart.controller.property.ViewPropertyController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    <property name="countriesDAO" ref="CountriesDAO"/>
+    <property name="countiesDAO" ref="CountiesDAO"/>
+    <property name="locationsDAO" ref="LocationsDAO"/>
+    <property name="rangeAmountDAO" ref="RangeAmountDAO"/> 
+    </bean>  
+    
+    <!-- Delete Property Form -->
+    <bean id="delprop" class="kejamart.controller.property.DeletePropertyController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    </bean> 
+    
+    <!-- Add Welcome Pics Form -->    
+    <bean id="propmain" class="kejamart.controller.property.AddMainPicController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    </bean> 
+    
+    <!-- Add Logo Form -->    
+    <bean id="logos" class="kejamart.controller.property.AddLogoController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    </bean>     
+    
+    <!-- Add Pics Form -->    
+    <bean id="propic" class="kejamart.controller.propertypic.AddPropertyPicController">
+    <property name="propertyPicDAO" ref="PropertyPicDAO"/>
+    </bean>       
+    
+    <!-- Edit Pics Form -->    
+    <bean id="edpic" class="kejamart.controller.propertypic.EditPropertyPicController">
+    <property name="propertyPicDAO" ref="PropertyPicDAO"/>
+    </bean> 
+    
+    <!-- Delete Pics Form -->    
+    <bean id="delpic" class="kejamart.controller.propertypic.DeletePicController">
+    <property name="propertyPicDAO" ref="PropertyPicDAO"/>
+    </bean>
+    
+    <!-- List Publish Pics Form -->    
+    <bean id="proplist" class="kejamart.controller.property.PublishListController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    </bean>
+    
+    <!-- Edit Publish Properties Form -->    
+    <bean id="public" class="kejamart.controller.property.PublishPropertyController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    <property name="countriesDAO" ref="CountriesDAO"/>
+    <property name="countiesDAO" ref="CountiesDAO"/>
+    <property name="locationsDAO" ref="LocationsDAO"/>
+    <property name="alertsDAO" ref="AlertsDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/> 
+    <property name="messagesDAO" ref="MessagesDAO"/>
+    </bean>
+    
+    <!-- Add Adverts Form -->    
+    <bean id="adv" class="kejamart.controller.adverts.AddAdvertController">
+    <property name="advertDAO" ref="AdvertDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/> 
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    </bean>
+    
+    <!-- View Adverts - Search Form -->    
+    <bean id="searchx" class="kejamart.controller.search.ViewAdvertController">
+    <property name="advertDAO" ref="AdvertDAO"/>
+    <property name="locationsDAO" ref="LocationsDAO"/>
+    <property name="countiesDAO" ref="CountiesDAO"/>
+    <property name="countriesDAO" ref="CountriesDAO"/>
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    <property name="propertyPicDAO" ref="PropertyPicDAO"/>
+    <property name="rangeAmountDAO" ref="RangeAmountDAO"/>
+    </bean>
+    
+    <!-- List Counties & LOV's Form -->    
+    <bean id="cntlist" class="kejamart.controller.county.CountyListController">
+    <property name="countiesDAO" ref="CountiesDAO"/>
+    </bean>  
+    
+    <!-- List / Read Notifications Form -->
+    <bean id="nots" class="kejamart.controller.messages.MessagesController">
+    <property name="messagesDAO" ref="MessagesDAO"/>
+    </bean>
+    
+    <!-- Search Form -->    
+    <bean id="viewdetails" class="kejamart.controller.propertypic.ViewPicController">
+    <property name="propertyDAO" ref="PropertyDAO"/>
+    <property name="resourcesDAO" ref="ResourcesDAO"/>
+    <property name="featuresDAO" ref="FeaturesDAO"/>
+    <property name="propertyPicDAO" ref="PropertyPicDAO"/>
+    <property name="mailConfigDAO" ref="MailConfigDAO"/>
+    </bean> 
+    
+    <!-- Add Resources Form -->    
+    <bean id="resource" class="kejamart.controller.resources.AddResourcesController">
+    <property name="resourcesDAO" ref="ResourcesDAO"/>
+    </bean> 
+    
+    <!-- Add Features Form -->    
+    <bean id="feat" class="kejamart.controller.feature.AddFeaturesController">
+    <property name="featuresDAO" ref="FeaturesDAO"/>
+    </bean>    
+
+    <!-- Generic Form -->
+    <bean id="pathController" class="kejamart.controller.main.GenericController"/>
+    
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="WEB-INF/messages" />
+    </bean> 
+    
+</beans>
+
+

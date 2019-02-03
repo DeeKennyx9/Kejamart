@@ -1,0 +1,309 @@
+
+
+http://www.raistudies.com/spring/spring-mvc/spring-mvc-json-jquery/
+
+http://creativecommons.org/
+
+http://www.concretepage.com/spring-4/spring-4-mvc-hibernate-4-mysql-maven-crud-integration-using-annotation-and-xml-with-tomcat-8-and-spring-boot-example
+
+http://rajnikantpanchal.blogspot.co.ke/2013/10/dynamic-fill-dropdown-list-in-spring.html
+
+http://roseindia.net/spring/springfileuploadexample.shtml
+
+http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mail.html
+
+http://websystique.com/spring/spring-4-email-using-velocity-freemaker-template-library/
+
+http://www.codejava.net/frameworks/spring/sending-e-mail-with-spring-mvc
+
+http://www.rgagnon.com/javadetails/java-0504.html
+
+https://mdeinum.wordpress.com/2007/02/09/converting-string-to-date-and-date-formatting-in-spring-mvc/
+
+D:\Project\JBOSS\server\default\deploy\jboss-web.deployer\server.xml - EDIT
+
+https://developer.jboss.org/wiki/ExternalDirectories
+
+         <Host name="localhost" ...>  
+	         <!-- ADD static images DIRECTORY -->  
+	         <Context path="/gallery"   
+	                 docBase="D:/KejaniGallery"  
+	                 reloadable="true">  
+	         </Context>  
+	         <!-- The rest of your Host entity -->  
+         </Host>
+
+http://teknosrc.com/access-local-files-static-content-images-videos-media-files-outside-web-application-system-apache-tomcat-server/
+
+http://dotclear.placeoweb.com/post/jboss6-serve-external-file-static-content-vhost
+
+http://stackoverflow.com/questions/27348610/how-to-correctly-show-an-image-in-portrait-mode-in-html?rq=1
+
+https://superuser.com/questions/57317/editing-jpeg-exif-properties         
+
+http://www.programming-free.com/2013/03/ajax-fetch-data-from-database-in-jsp.html
+
+https://www.iconfinder.com/icons/352021/arrow_down_drop_icon#size=24
+
+https://v4-alpha.getbootstrap.com/components/carousel/#carouselExampleControls
+
+http://www.realestate.com.au/property-other-nsw-oberon-7900278
+
+https://www.slideshare.net/mjskok/turning-products-into-companies-19004101/5-Harvard_innovation_lab_Michael_J
+
+https://glyphsearch.com/
+
+https://www.linode.com/docs/email/using-google-apps-for-email/
+
+https://gsuite.google.com/
+
+https://www.linode.com/docs/networking/dns/dns-records-an-introduction/
+
+https://www.linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates
+******************************************************************************************
+
+LETS ENCRYPT HAS A 90 DAY LIFESPAN THAT NEEDS RENEWAL - 9.6.2017
+
+keystoreFile="/etc/letsencrypt/live/kejamart.com/KejamartKeyStore.jks" keystorePass="testtest1"
+
+https://www.tikalk.com/configuring-jboss-over-https-including-redirecting-http-requests-to-https/
+
+Warning:
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS 12 
+which is an industry standard format using 
+"keytool -importkeystore -srckeystore KejamartKeyStore.jks -destkeystore KejamartKeyStore.jks -deststoretype pkcs12".
+
+
+<security-constraint>
+<web-resource-collection>
+<web-resource-name>kejani</web-resource-name>
+<url-pattern>/*</url-pattern>      
+</web-resource-collection>
+<user-data-constraint>
+<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+</user-data-constraint>
+</security-constraint>
+
+Google Map - Street View
+Google Maps - Google Api Manager
+
+KEY - AIzaSyCn1Bve3n1L5Cf0-xieaRmKovxOeFhirog
+
+AIzaSyBzCFhBx49-vjB7m62BCKg5Bb_yXL6z5sw 
+
+
+API - property status
+default = 0
+publish = 1
+classifieds = 2
+
+		// 0 = not published yet
+		// 1 = published
+		// 2 = classified
+		
+https://www.tutorialspoint.com/jsp/jstl_format_formatnumber_tag.htm
+
+https://blogs.oracle.com/blogbypuneeth/steps-to-create-a-jks-keystore-using-key-and-crt-files
+
+Install Let's Encrypt
+***********************
+
+https://www.linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/
+
+sudo apt-get install git
+
+sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
+
+End
+***********
+
+Create New Let's Encrypt Certificate
+**************************************
+
+1. stop app server - jboss
+
+2. cd /opt/letsencrypt
+
+3. sudo -H ./letsencrypt-auto certonly --standalone -d kejamart.com -d www.kejamart.com
+
+/opt/letsencrypt/bin/letsencrypt --version
+
+End
+*************
+
+Create KeyStore
+****************************************
+
+cd /etc/letsencrypt/live/kejamart.com/
+
+echo $JAVA_HOME
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+//export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+(create cert_and_key.p12 file)
+openssl pkcs12 -export -in cert.pem -inkey privkey.pem -out cert_and_key.p12 -name jboss -CAfile chain.pem -caname root
+//openssl pkcs12 -export -in cert.pem -inkey privkey.pem -out cert_and_key.p12 -name jboss -CAfile chain.pem -caname kenny
+
+(create .jks file)
+keytool -importkeystore -srckeystore cert_and_key.p12 -srcstoretype pkcs12 -destkeystore KejamartKeyStore.jks -deststoretype jks
+
+cp KejamartKeyStore.jks /Kejamart/project/JBOSS/server/default/deploy/jboss-web.deployer/conf
+
+End
+*************
+
+Lets Encrypt Maintenance
+Renew SSL Certificates
+****************************
+
+1. stop app server - jboss
+
+cd /kejani/workspace/Kejani/trunk/SVN_LOCAL/masterbuild
+
+ant jboss.stop
+
+2. cd /opt/letsencrypt
+
+3. sudo -H ./letsencrypt-auto certonly --standalone --renew-by-default -d kejamart.com -d www.kejamart.com
+
+cd /kejani/workspace/Kejani/trunk/SVN_LOCAL/masterbuild
+
+ant masterbuild.clean
+
+ant jboss.clean
+
+ant ear.deploy.ear.to.jboss
+
+ant jboss.start
+
+:/etc/letsencrypt/live/
+
+End
+******* 
+
+mysql -u root -p
+
+http://patternico.com/
+https://www.toptal.com/designers/subtlepatterns/
+https://blog.hostway.com/blog/10-ways-to-make-your-website-load-faster
+https://www.cloudflare.com/
+https://www.cssfontstack.com/
+
+https://developers.facebook.com/tools/debug/og/object/
+https://publish.twitter.com/
+https://dev.twitter.com/cards/types/summary-large-image
+https://www.flaticon.com
+ 
+Monit Installation
+*******************
+
+https://www.tecmint.com/how-to-install-and-setup-monit-linux-process-and-services-monitoring-program/
+
+sudo apt-get install monit
+
+Monit has it’s web interface that runs on port 2812 using web server. To enable web interface you need to make changes in monit configuration file. The main configuration file of monit located at /etc/monit.conf under (RedHat/CentOS/Fedora) and /etc/monit/monitrc file for (Ubuntu/Debian/Linux Mint). Open this file using your choice of editor.
+
+sudo vi /etc/monit/monitrc
+
+Once you’ve configured it, you need to start the monit service to reload the new configuration settings.
+
+sudo /etc/init.d/monit start
+
+Now, you will able to access the monit web interface by navigating to the http://localhost:2812 or http://example.com:2812. 
+Then enter user name as admin and password as monit. You should get screen similar to below.
+
+Once you’ve configured it, you need to start the monit service to reload the new configuration settings.
+
+# /etc/init.d/monit start
+
+http://172.104.151.143:2812/
+
+
+http://www.vogella.com/tutorials/JavaPerformance/article.html
+
+MYSQL
+*****
+
+mysql -u root -p
+
+password: kendrick2018
+
+CREATE USER 'kadmin'@'localhost' IDENTIFIED BY 'astroworld1x'; 
+
+GRANT ALL PRIVILEGES ON *.* TO 'kadmin'@'localhost' IDENTIFIED BY 'astroworld1x';
+
+mysql -u kadmin -p
+
+password: astroworld1x
+
+CREATE DATABASE kmart;
+
+
+sql dmp
+**********
+
+location=~/kejanidmp/`date +%Y%m%d_%H%M%S`.db
+
+mysqldump -u root --password=kendrick2018 kejani > $location
+
+gzip $location
+
+https://icons8.com/preloaders/en/free
+
+https://spark.adobe.com/
+
+https://www.animaker.com
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+
+export PATH=$PATH:~/usr/lib/jvm/java-8-openjdk-amd64
+
+
+
+
+https://dzone.com/articles/spring-boot-secured-by-lets-encrypt
+
+https://www.heydari.be/spring-boot-application-secured-by-a-lets-encrypt-certificate/
+
+https://github.com/creactiviti/spring-boot-starter-acme
+
+https://gist.github.com/sureshg/7905efdb720f1bd7441fe6c322f2f052
+
+https://gist.github.com/weiserr/f6b65f11182956c23bfbe08fbc084e94
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Kejamart" basedir="." >
+	<!-- Properties files -->
+	<import file="../masterbuild/masterbuildproperties.xml" />
+	<import file="../lib/libproperties.xml" />
+	<import file="../javadocs/javadocproperties.xml" />
+	<import file="../hibernate/hibernateproperties.xml" />
+    <import file="../dao/daoproperties.xml" />
+    <import file="../web/webproperties.xml" />
+	<import file="../ear/earproperties.xml" />
+
+	<!-- Ant task files -->
+	<import file="../javadocs/javadoc.xml" />
+	<import file="../masterbuild/masterbuild.xml" />
+	<import file="../hibernate/hibernate.xml" />
+	<import file="../xdoclet/xdoclet.xml"/>
+	<import file="../dao/dao.xml" />
+	<import file="../web/web.xml" />
+	<import file="../web/webxdoclet.xml" />
+	<import file="../ear/ear.xml" />
+	<import file="../jboss/jboss.xml" />
+
+	<!-- Make directory files -->
+	<import file="../hibernate/hibernatemakedir.xml" />
+	<import file="../javadocs/javadocmakedir.xml" />
+	<import file="../dao/daomakedir.xml" />
+	<import file="../web/webmakedir.xml" />
+	<import file="../ear/earmakedir.xml" />
+</project>

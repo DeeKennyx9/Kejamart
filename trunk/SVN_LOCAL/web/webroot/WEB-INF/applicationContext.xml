@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+          "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location"
+			value="/WEB-INF/mysql.jdbc.properties" />
+	</bean>
+
+	<!-- ======================== data sources ============================= -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<!-- ==================================================================== -->
+
+
+	<!-- ======================== Hibernate properties =============================== -->
+	<bean id="hibernateProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">
+					${hibernate.hbm2ddl.auto}
+				</prop>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.query.substitutions">
+					${hibernate.query.substitutions}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.c3p0.minPoolSize">
+					${hibernate.c3p0.minPoolSize}
+				</prop>
+				<prop key="hibernate.c3p0.maxPoolSize">
+					${hibernate.c3p0.maxPoolSize}
+				</prop>
+				<prop key="hibernate.c3p0.timeout">
+					${hibernate.c3p0.timeout}
+				</prop>
+				<prop key="hibernate.c3p0.max_statement">
+					${hibernate.c3p0.max_statement}
+				</prop>
+				<prop key="hibernate.c3p0.testConnectionOnCheckout">
+					${hibernate.c3p0.testConnectionOnCheckout}
+				</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<ref local="hibernateProperties" />
+		</property>
+		<property name="annotatedClasses">
+			<list>
+			    <value>kejamart.model.Roles</value>
+			    <value>kejamart.model.UserRoles</value>
+				<value>kejamart.model.Profile</value>
+				<value>kejamart.model.Property</value>
+				<value>kejamart.model.PropertyPics</value>
+				<value>kejamart.model.Adverts</value>
+				<value>kejamart.model.Alerts</value>
+				<value>kejamart.model.Messages</value>	
+		        <value>kejamart.model.Locations</value>
+				<value>kejamart.model.Countries</value>
+				<value>kejamart.model.Counties</value>
+				<value>kejamart.model.MailConfig</value>
+				<value>kejamart.model.RangeAmount</value>
+				<value>kejamart.model.Resources</value>
+				<value>kejamart.model.Features</value>
+			</list>
+		</property>
+	</bean>
+
+    <bean id="TxManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">	
+    <!-- property name="maxUploadSize" value="5000000" / -->
+    </bean>
+
+	<!-- ======================== Application Services ============================== -->
+
+
+	<!-- ======================== Application DAO ============================== -->
+			
+	<bean id="LogDAO" class="kejamart.dao.LogDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="ProfileDAO" class="kejamart.dao.ProfileDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="PropertyDAO" class="kejamart.dao.PropertyDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="PropertyPicDAO" class="kejamart.dao.PropertyPicDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="AlertsDAO" class="kejamart.dao.AlertsDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+    <bean id="MessagesDAO" class="kejamart.dao.MessagesDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="CountiesDAO" class="kejamart.dao.CountiesDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="CountriesDAO" class="kejamart.dao.CountriesDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="LocationsDAO" class="kejamart.dao.LocationsDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+		
+	<bean id="MailConfigDAO" class="kejamart.dao.MailConfigDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="RangeAmountDAO" class="kejamart.dao.RangeAmountDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="AdvertDAO" class="kejamart.dao.AdvertDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="ResourcesDAO" class="kejamart.dao.ResourcesDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>		
+	
+	<bean id="FeaturesDAO" class="kejamart.dao.FeaturesDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+</beans>	
+    

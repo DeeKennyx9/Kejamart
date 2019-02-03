@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="dao_make_directories" basedir=".">
+    <target name="dao.make.dir">
+        <mkdir dir="${absolute.dao.build.classes.dir}"/>
+        <mkdir dir="${absolute.dao.dist.dir}"/>
+    </target>
+</project>

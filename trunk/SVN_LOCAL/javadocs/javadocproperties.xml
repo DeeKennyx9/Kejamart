@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="javadoc_properties" basedir=".">
+    <property name="javadoc.dir" value="javadoc"/>
+    <property name="absolute.javadoc.build.dir" value="${absolute.main.build.dir}/${javadoc.dir}"/>
+    <target name="javadoc.show.properties" description="show codemonitor javadoc properties">
+        <echo>javadoc.dir=${javadoc.dir}</echo>
+        <echo>absolute.javadoc.build.dir=${absolute.javadoc.build.dir}</echo>     
+    </target>
+</project>

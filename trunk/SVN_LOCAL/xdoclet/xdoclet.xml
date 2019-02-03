@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="xdoclet" basedir=".">
+
+    <path id="xdoclet.classpath">
+        <fileset dir="${absolute.static.lib.xdoclet.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${absolute.static.lib.servlet.dir}">
+            <include name="**/*.jar"/>
+            </fileset>
+        </path>
+    
+    <taskdef name="webdoclet"
+                classname="xdoclet.modules.web.WebDocletTask">
+        <classpath refid="xdoclet.classpath"/>
+    </taskdef>
+    
+    <taskdef name="todo" 
+                classname="xdoclet.modules.doc.DocumentDocletTask">
+             <classpath refid="xdoclet.classpath"/>
+    </taskdef>
+</project>

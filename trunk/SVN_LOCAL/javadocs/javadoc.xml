@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="javadoc" basedir=".">
+	
+    <target name="javadoc.create.javadoc" description="create kejani javadoc">
+        <delete dir="${absolute.javadoc.build.dir}"/>
+        <mkdir dir="${absolute.javadoc.build.dir}"/>
+        <javadoc destdir="${absolute.javadoc.build.dir}"
+            author="true"
+            version="true"
+            use="true"
+            windowtitle="Javadoc for App">
+
+            <packageset dir="${absolute.hibernate.src.dir}" defaultexcludes="yes">
+                <include name="**/**" />
+            </packageset>
+            <packageset dir="${absolute.dao.src.dir}" defaultexcludes="yes">
+                <include name="**/**" />
+            </packageset>            
+            <packageset dir="${absolute.web.src.dir}" defaultexcludes="yes">
+                <include name="**/**" />
+            </packageset>
+            <doctitle><![CDATA[<h1>Kejani Java Docs</h1>]]></doctitle>
+            <bottom><![CDATA[<i>Copyright &#169; 2017 Kejani All Rights Reserved.</i>]]></bottom>
+            <tag name="todo" scope="all" description="To do:" />
+        </javadoc>
+    </target>
+</project>

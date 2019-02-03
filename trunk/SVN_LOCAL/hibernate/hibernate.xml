@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="hibernate" basedir=".">
+    <path id="classpath.hibernate">
+        <pathelement location="." />
+        <fileset dir="${absolute.static.lib.dir}">
+            <include name="hibernate/*.jar" />
+            <include name="log4j/*.jar" />
+            <include name="dbunit/*.jar" />
+            <include name="spring/*.jar" />
+            <include name="json/*.jar" />
+        </fileset>
+     </path>
+
+    <path id="classpath.hibernate.create.tables">
+        <pathelement location="${absolute.hibernate.build.classes.dir}" />
+        <fileset dir="${absolute.generichelpers.dist.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${absolute.dao.dist.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${absolute.static.lib.dir}">
+            <include name="hibernate/*.jar" />
+            <include name="log4j/*.jar" />
+            <include name="spring/*.jar" />
+            <include name="spring/modules/*.jar" />
+            <include name="jakarta-commons/*.jar" />
+            <include name="mysql/*.jar" />
+            <include name="dom4j/*.jar" />
+            <include name="j2ee/*.jar" />
+            <include name="lucene/*.jar" />
+            <include name="cglib/*.jar" />
+        </fileset>
+        <fileset dir="${absolute.jdesk_hibernate.dist.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+    
+
+    <path id="classpath.hibernate.load.up.standing.data">
+        <pathelement location="${absolute.hibernate.build.classes.dir}" />
+        <fileset dir="${absolute.generichelpers.dist.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${absolute.static.lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+
+
+    <target name="hibernate.compile" 
+            depends="hibernate.make.dir" 
+            description="compile hibernate">
+            
+        <javac destdir="${absolute.hibernate.build.classes.dir}" nowarn="${build.compiler.nowarn}" debug="${build.compiler.compile.with.debug}" compiler="${build.compiler}" source="${build.source}" target="${build.target}" includeantruntime="false">
+            <src path="${absolute.hibernate.src.dir}" />
+            <classpath>
+                <path refid="classpath.hibernate" />
+            </classpath>
+        </javac>
+    </target>
+
+
+    <target name="hibernate.create.jar" depends="hibernate.compile" 
+            description="create hibernate jar">
+        <jar destfile="${absolute.hibernate.hibernate.jar.name}">
+            <fileset dir="${absolute.hibernate.build.classes.dir}">
+                <include name="**/*.class" />
+                <include name="**/*.xml" />
+            </fileset>
+            <fileset dir="${absolute.hibernate.src.dir}">
+                <include name="**/*.xml" />
+                <include name="**/*.properties" />
+            </fileset>
+        </jar>
+    </target>
+</project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="webxdoclet" basedir=".">
+    
+    <target name="web.xdoclet.generate.code">
+
+        <echo>absolute.web.src.dir=${absolute.web.src.dir}</echo>
+        
+        <webdoclet destdir="${absolute.web.build.generated.xml.dir}"  
+                   mergedir="${absolute.web.src.merge.dir}" 
+                   verbose="true" force="false">
+            
+            <fileset dir="${absolute.web.src.dir}">
+                <include name="**/*.java" />
+            </fileset>
+            
+            <deploymentdescriptor distributable="false"/>
+        </webdoclet>        
+    </target>
+</project>

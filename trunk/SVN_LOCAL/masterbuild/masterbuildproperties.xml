@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="masterbuild_properties" basedir="."> 
+
+    <dirname property="root.dir" file="${ant.file.masterbuild_properties}/../.."/>
+
+    <property name="choose.properties.file" location="choose.config.properties"/>
+    <property file="${choose.properties.file}"/>
+    <property file="${config.property.file}"/>
+    <property name="main.build.dir" value="BUILD_LOCAL"/>
+    <property name="main.src.dir" value="SVN_LOCAL"/>
+    <property name="src.dir" value="src"/>
+    <property name="generated.src.dir" value="generated_src" />
+    <property name="build.dir" value="build"/>
+    <property name="build.classes.dir" value="build/classes"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="manifest.dir" value="manifest"/>
+    <property name="xdoclet.merge.dir" value="merge"/>    
+    
+    <property name="absolute.main.build.dir" value="${root.dir}/${main.build.dir}"/>
+    <property name="absolute.main.src.dir" value="${root.dir}/${main.src.dir}"/>
+	<property name="log4j.configuration" value="${absolute.main.src.dir}/log4j/log4j.xml"/>          
+    
+    <target name="show.properties.if.necessary">    
+        <condition property="show_properties">
+            <istrue value="${show.properties}"/>
+        </condition>    
+    </target>
+    
+    <!-- depends="show.properties.if.necessary -->
+    <target name="show.properties" >
+		<echo>root.dir=${root.dir}</echo>    
+        <echo>choose.properties.file=${choose.properties.file}</echo>
+        <echo>main.build.dir=${main.build.dir}</echo>
+        <echo>main.src.dir=${main.src.dir}</echo>
+        <echo>src.dir=${src.dir}</echo>
+        <echo>generated.src.dir=${generated.src.dir}</echo>
+        <echo>build.dir=${build.dir}</echo>
+        <echo>build.classes.dir=${build.classes.dir}</echo>
+        <echo>dist.dir=${dist.dir}</echo>
+        <echo>manifest.dir=${manifest.dir}</echo>
+        <echo>xdoclet.merge.dir=${xdoclet.merge.dir}</echo>
+        <echo>absolute.main.build.dir=${absolute.main.build.dir}</echo>
+        <echo>absolute.main.src.dir=${absolute.main.src.dir}</echo>
+    	<echo>log4j.configuration=${log4j.configuration}</echo>
+    </target>
+    
+    <target name="check.user.properties.are.set" depends="check.user.properties, show.properties">
+                    
+        <fail unless="properties.are.set" 
+              message="FAILED: Not all basic properties are set !!!!"/>
+    </target>
+    
+    <target name="check.user.properties">
+        <condition property="properties.are.set">
+            <and>
+                <isset property="build.compiler" />
+                <isset property="build.compiler.nowarn" />
+                <isset property="build.compiler.compile.with.debug" />
+                <isset property="java.main.class" />
+                <isset property="java.fork" />
+                <isset property="java.failOnError" />
+                <isset property="java.maxMemory" />
+                <isset property="hibernate.jar.name" />
+                <isset property="dao.jar.name" />
+                <isset property="web.war.name" />
+                <isset property="ear.name" />
+                <isset property="absolute.appserver.home.dir" />
+                <isset property="appserver.configuration" />
+                <isset property="show.properties" />
+            </and>
+        </condition>
+    </target>   
+</project>

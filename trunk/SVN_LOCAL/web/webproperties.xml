@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="web properties" basedir=".">
+    <property name="web.dir" value="web"/>
+    <property name="webroot.dir" value="webroot"/>
+    <property name="web-inf.dir" value="WEB-INF"/>
+    
+    <property name="web.generated.xml.dir" value="${web.dir}/generated/xml"/>
+
+    <property name="absolute.web.build.dir" value="${absolute.main.build.dir}/${web.dir}"/>  
+    <property name="absolute.web.build.classes.dir" value="${absolute.web.build.dir}/${build.classes.dir}"/>
+    <property name="absolute.web.dist.dir" value="${absolute.web.build.dir}/${dist.dir}"/>
+    <property name="absolute.web.src.dir" value="${absolute.main.src.dir}/${web.dir}/${src.dir}"/>
+
+    <property name="absolute.web.src.merge.dir" 
+          value="${absolute.main.src.dir}/${web.dir}/${xdoclet.merge.dir}" />
+
+    <property name="absolute.web.build.generated.xml.dir" 
+          value="${absolute.main.build.dir}/${web.generated.xml.dir}" />
+                    
+    <property name="absolute.web.dist.web.war.name"
+          value="${absolute.main.build.dir}/${web.dir}/dist/${web.war.name}" />
+
+    <property name="absolute.web.web.xml.name"
+          value="${absolute.web.build.generated.xml.dir}/web.xml" />
+
+    <property name="absolute.web.src.manifest.dir" 
+          value="${absolute.main.src.dir}/${web.dir}/${manifest.dir}"/>
+
+    <property name="absolute.web.src.manifest.name" 
+              value="${absolute.web.src.manifest.dir}/MANIFEST.MF"/>
+
+    <property name="absolute.web.src.webroot.dir"
+          value="${absolute.main.src.dir}/${web.dir}/${webroot.dir}" />
+          
+    <property name="absolute.web.build.webroot.dir"
+          value="${absolute.main.build.dir}/${web.dir}/${webroot.dir}" />
+
+    <property name="absolute.web.src.web-inf.dir"
+          value="${absolute.web.src.webroot.dir}/${web-inf.dir}" />
+    
+    <target name="web.show.properties">
+        <echo>web.dir=${web.dir}</echo>
+        <echo>webroot.dir=${webroot.dir}</echo>
+        <echo>web-inf.dir=${web-inf.dir}</echo>
+        <echo>web.generated.xml.dir=${web.generated.xml.dir}</echo>
+        <echo>absolute.web.build.dir=${absolute.web.build.dir}</echo>
+        <echo>absolute.web.build.classes.dir=${absolute.web.build.classes.dir}</echo>
+        <echo>absolute.web.dist.dir=${absolute.web.dist.dir}</echo>
+        <echo>absolute.web.src.dir=${absolute.web.src.dir}</echo> 
+        <echo>absolute.web.src.merge.dir=${absolute.web.src.merge.dir}</echo>
+        <echo>absolute.web.build.generated.xml.dir=${absolute.web.build.generated.xml.dir}</echo>
+        <echo>absolute.web.dist.web.war.name=${absolute.web.dist.web.war.name}</echo>
+        <echo>absolute.web.web.xml.name=${absolute.web.web.xml.name}</echo>
+        <echo>absolute.web.src.manifest.dir=${absolute.web.src.manifest.dir}</echo>
+        <echo>absolute.web.src.manifest.name=${absolute.web.src.manifest.name}</echo>     
+        <echo>absolute.web.src.webroot.dir=${absolute.web.src.webroot.dir}</echo>
+        <echo>absolute.web.src.web-inf.dir=${absolute.web.src.web-inf.dir}</echo>
+    </target>
+</project>

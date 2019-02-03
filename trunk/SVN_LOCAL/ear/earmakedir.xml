@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="ear_make_directories" basedir="." default="info">
+    <target name="ear.make.dir">
+        <mkdir dir="${absolute.ear.dist.dir}"/>
+    </target>
+</project>

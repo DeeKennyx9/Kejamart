@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="helpers_make_directories" basedir="." default="info">
+    <target name="helpers.make.dir">
+        <mkdir dir="${absolute.helpers.build.classes.dir}"/>
+        <mkdir dir="${absolute.helpers.dist.dir}"/>
+    </target>
+</project>

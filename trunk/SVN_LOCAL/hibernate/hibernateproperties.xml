@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="hibernate_properties" basedir="." default="info">
+    <property name="hibernate.dir" value="hibernate"/>
+    <property name="absolute.hibernate.build.classes.dir" value="${absolute.main.build.dir}/${hibernate.dir}/${build.classes.dir}"/>
+    <property name="absolute.hibernate.dist.dir" value="${absolute.main.build.dir}/${hibernate.dir}/${dist.dir}"/>
+    <property name="absolute.hibernate.src.dir" value="${absolute.main.src.dir}/${hibernate.dir}/${src.dir}"/>
+    <property name="absolute.hibernate.hibernate.jar.name" value="${absolute.hibernate.dist.dir}/${hibernate.jar.name}"/>
+    <property name="absolute.hibernate.db.properties.file.name" value="${absolute.main.src.dir}/${hibernate.dir}/${hibernate.db.properties.file.name}"/>
+    <property name="absolute.hibernate.export.dbscema.file.name" value="${absolute.hibernate.dist.dir}/${hibernate.export.dbscema.file.name}"/>
+    <property name="absolute.hibernate.dbunit.xml.file" value="${absolute.main.src.dir}/${hibernate.dir}/db.xml" />
+
+    <target name="hibernate.show.properties" description="show kejani hibernate properties">
+        <echo>hibernate.dir=${hibernate.dir}</echo>
+        <echo>absolute.hibernate.build.classes.dir=${absolute.hibernate.build.classes.dir}</echo>
+        <echo>absolute.hibernate.dist.dir=${absolute.hibernate.dist.dir}</echo>
+        <echo>absolute.hibernate.src.dir=${absolute.hibernate.src.dir}</echo>
+        <echo>absolute.hibernate.hibernate.jar.name=${absolute.hibernate.hibernate.jar.name}</echo>
+        <echo>absolute.hibernate.db.properties.file.name=${absolute.hibernate.db.properties.file.name}</echo>
+        <echo>absolute.hibernate.export.dbscema.file.name=${absolute.hibernate.export.dbscema.file.name}</echo>
+        <echo>absolute.hibernate.dbunit.xml.file=${absolute.hibernate.dbunit.xml.file}</echo>
+    </target>
+</project>

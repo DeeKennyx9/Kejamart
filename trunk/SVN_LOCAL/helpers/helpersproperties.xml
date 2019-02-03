@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="helpers_properties" basedir="." default="info">
+	<property name="helpers.dir" value="helpers" />
+	<property name="absolute.helpers.build.classes.dir"
+		value="${absolute.main.build.dir}/${helpers.dir}/${build.classes.dir}" />
+	<property name="absolute.helpers.dist.dir"
+		value="${absolute.main.build.dir}/${helpers.dir}/${dist.dir}" />
+	<property name="absolute.helpers.src.dir"
+		value="${absolute.main.src.dir}/${helpers.dir}/${src.dir}" />
+	<property name="absolute.helpers.helpers.jar.name"
+		value="${absolute.helpers.dist.dir}/${helpers.jar.name}" />
+
+
+	<target name="helpers.show.properties"
+		description="show helpers properties">
+		<echo>helpers.dir=${helpers.dir}</echo>
+		<echo>absolute.helpers.build.classes.dir=${absolute.helpers.build.classes.dir}</echo>
+		<echo>absolute.helpers.dist.dir=${absolute.helpers.dist.dir}</echo>
+		<echo>absolute.helpers.src.dir=${absolute.helpers.src.dir}</echo>
+		<echo>absolute.helpers.helpers.jar.name=${absolute.helpers.helpers.jar.name}</echo>
+	</target>
+</project>

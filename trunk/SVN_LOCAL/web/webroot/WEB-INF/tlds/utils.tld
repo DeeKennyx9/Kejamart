@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===============================================================================
+  
+  	Copyright 2007 @ javaspeak
+  
+      This file is part of JDesk project.
+  
+      JDesk is free software: you can redistribute it and/or modify
+      it under the terms of the Lesser GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+  
+      JDesk is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      Lesser GNU General Public License for more details.
+  
+      You should have received a copy of the Lesser GNU General Public License
+      along with JDesk.  If not, see <http://www.gnu.org/licenses/>.
+  
+  ===============================================================================
+      
+   Author Piotr Fronc
+  ===============================================================================
+ -->
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd">
+  <tlib-version>1.0</tlib-version>
+  <short-name>utils</short-name>
+  <uri>/WEB-INF/tlds/utils</uri>
+  <function>
+    <name>encodeTagAttribute</name>
+    <function-class>com.javaspeak.jdesk.web.tags.utils.TextFunctions</function-class>
+    <function-signature>String encodeTagAttribute( java.lang.String)</function-signature>
+  </function>
+  <function>
+    <name>encodeTagAttributeNoQuotes</name>
+    <function-class>com.javaspeak.jdesk.web.tags.utils.TextFunctions</function-class>
+    <function-signature>String encodeTagAttributeNoQuotes( java.lang.String)</function-signature>
+  </function>
+  <function>
+    <name>encodeTagAttributeNoSingleQuotes</name>
+    <function-class>com.javaspeak.jdesk.web.tags.utils.TextFunctions</function-class>
+    <function-signature>String encodeTagAttributeNoSingleQuotes( java.lang.String)</function-signature>
+  </function>
+  <function>
+    <name>encodeQuoteForward</name>
+    <function-class>com.javaspeak.jdesk.web.tags.utils.TextFunctions</function-class>
+    <function-signature>String encodeQuoteForward( java.lang.String)</function-signature>
+  </function>
+  <function>
+    <name>getIcons</name>
+    <function-class>com.javaspeak.jdesk.web.tags.utils.ThemeUtils</function-class>
+    <function-signature>java.util.ArrayList getIcons( java.lang.String , javax.servlet.jsp.PageContext)</function-signature>
+  </function>
+</taglib>

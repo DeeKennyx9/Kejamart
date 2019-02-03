@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="javadoc_make_directories" basedir=".">
+      <target name="javadoc.make.dir">
+        <mkdir dir="${absolute.javadoc.build.dir}"/>
+    </target>
+</project>

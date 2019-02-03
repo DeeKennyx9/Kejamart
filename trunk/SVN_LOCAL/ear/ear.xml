@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="ear" basedir=".">
+	<import file="earproperties.xml" />
+	<import file="earmakedir.xml" />
+
+
+	<target name="ear.create.ear" description="creates ear" depends="ear.make.dir, hibernate.create.jar, dao.create.jar, web.create.war">
+
+		<ear destfile="${absolute.ear.dist.ear.name}" appxml="${absolute.ear.src.meta-inf.application.xml.name}">
+			<fileset dir="${absolute.web.dist.dir}">
+				<include name="${web.war.name}" />
+			</fileset>
+			<zipfileset dir="${absolute.static.lib.dir}/hibernate" prefix="lib/hibernate">
+				<include name="*.jar" />
+			</zipfileset>
+			<zipfileset dir="${absolute.static.lib.dir}/javamail" prefix="lib/javamail">
+				<include name="*.jar" />
+			</zipfileset>
+			<zipfileset dir="${absolute.static.lib.dir}/lucene" prefix="lib/lucene">
+				<include name="*.jar" />
+			</zipfileset>
+			<zipfileset dir="${absolute.static.lib.dir}/log4j" prefix="lib/log4j">
+				<include name="*.jar" />
+			</zipfileset>
+			<zipfileset dir="${absolute.static.lib.dir}/mysql" prefix="lib/mysql">
+				<include name="*.jar" />
+			</zipfileset>
+			<zipfileset dir="${absolute.static.lib.dir}/postgresql" prefix="lib/postgresql">
+				<include name="*.jar" />
+			</zipfileset>
+			<zipfileset dir="${absolute.static.lib.dir}/spring" prefix="lib/spring">
+				<include name="*.jar" />
+			</zipfileset>
+			<zipfileset dir="${absolute.static.lib.dir}/spring/modules" prefix="lib/spring/modules">
+				<include name="*.jar" />
+			</zipfileset>
+			<zipfileset dir="${absolute.dao.dist.dir}" prefix="lib/application">
+				<include name="${dao.jar.name}" />
+			</zipfileset>
+			<zipfileset dir="${absolute.hibernate.dist.dir}" prefix="lib/application">
+				<include name="${hibernate.jar.name}" />
+			</zipfileset>
+			<zipfileset dir="${absolute.static.lib.dir}/json" prefix="lib/json">
+				<include name="*.jar" />
+			</zipfileset>
+		</ear>
+	</target>
+
+	<target name="ear.deploy.ear.to.jboss" description="deploys ear to jboss" depends="ear.create.ear">
+		<copy file="${absolute.ear.dist.ear.name}" toFile="${absolute.ear.jboss.deploy.name}" />
+	</target>
+</project>

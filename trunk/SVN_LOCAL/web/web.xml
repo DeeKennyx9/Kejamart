@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="web" basedir=".">	
+    <path id="web.classpath">
+        <pathelement location="."/>
+        <fileset dir="${absolute.static.lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${absolute.hibernate.dist.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${absolute.dao.dist.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+	
+    <target name="web.compile" depends="web.make.dir">
+    
+        <javac destdir="${absolute.web.build.classes.dir}" 
+                nowarn="${build.compiler.nowarn}" 
+                debug="${build.compiler.compile.with.debug}" 
+                compiler="${build.compiler}" 
+                source="${build.source}" 
+                target="${build.target}">
+
+            <src path="${absolute.web.src.dir}" />
+
+            <classpath>
+                <path refid="web.classpath" />
+            </classpath>
+        </javac>
+
+        <copy todir="${absolute.web.build.classes.dir}">
+            <fileset dir="${absolute.web.src.dir}">
+                <exclude name="**/*.java" />
+            </fileset>
+        </copy>        
+    </target>
+
+
+
+    <target name="web.create.war" 
+            depends="web.compile, web.xdoclet.generate.code">            
+       
+        <copy todir="${absolute.web.build.webroot.dir}" overwrite="true">
+            <fileset dir="${absolute.web.src.webroot.dir}">
+                <include name="jsp/*.jsp" />
+            	<include name="jsp/*.xml" />
+            	<include name="sitemap/*.xml" />
+                <include name="jsp/*.txt" />
+            	<include name="jsp/*.html" />
+            	<include name="kjadverts/*.*" />
+                <include name="kjpics/*.*" />
+            	<include name="color/*.*" />
+            	<include name="color/*.*" />
+            	<include name="font-awesome/**/*.*" />
+            	<include name="fonts/*.*" />
+                <include name="js/*.js" />
+                <include name="js/**/*.js" />
+            	<include name="jsmain/*.js" />
+                <include name="html/*.html" />
+                <include name="css/*.css" />
+                <include name="javascript/*.js" />
+            	<include name="javascript/**/*.js" />
+            	<include name="images/*.*" />
+                <include name="led-icons/*.*" />
+            	<include name="img/*.*" />
+            	<include name="fonts/*.*" />
+                <include name="*.html" />
+                <include name="*.jsp" />
+                <include name="pics/**/*.png"/>
+                <include name="pics/**/*.gif"/>
+                <include name="errors/*.jsp"/>
+				<include name="greybox/**/*.*" />
+				<include name="calendar/**/*.*" />
+				<include name="cal/**/*.*" />
+				<include name="aptabs/**/*.*" />
+				<include name="images/**" />
+            	<include name="images/**/*.gif"/>
+            	<include name="images/**/*.jpg"/>
+            	<include name="images/**/*.swf"/>
+            	<include name="images/**/*.png"/>
+            	<include name="images/front/*.gif"/>
+               	<include name="images/front/*.jpg"/>   
+               	<include name="images/front/*.ico"/> 
+            	<include name="images/front/*.png"/>            	
+            	<include name="images/global/*.gif"/>
+               	<include name="images/global/*.jpg"/>   
+               	<include name="images/global/*.ico"/> 
+            	<include name="images/global/*.png"/>            	
+               	<include name="images/img/*.jpg"/>   
+               	<include name="images/img/*.ico"/>            	
+            	<include name="images/**/*.swf"/>
+            	<include name="images/*.swf"/>
+                <include name="images/img/*.gif"/>   
+            	<include name="images/img/*.png"/>            	
+            	<include name="images/logo/*.png"/> 
+                <include name="images/logo/*.jpg"/>   
+                <include name="images/logo/*.ico"/>  
+                <include name="images/logo/*.gif"/>             	
+            	<include name="images/progress/*.png"/> 
+            	<include name="images/progress/*.gif"/> 
+                <include name="images/progress/*.jpg"/>   
+                <include name="images/progress/*.ico"/>             	
+			 </fileset>
+        </copy>    
+
+        <war destfile="${absolute.web.dist.web.war.name}"
+            webxml="${absolute.web.web.xml.name}">
+            <classes dir="${absolute.web.build.classes.dir}"/> 
+            
+            <classes dir="${absolute.web.src.dir}">
+                <exclude name="**/*.java"/>
+                <exclude name="**/*.properties"/>
+            </classes>
+            
+            <zipfileset dir="${absolute.web.build.webroot.dir}">
+                <include name="**/*.*" />
+            </zipfileset>
+            
+            <zipfileset dir="${absolute.web.src.web-inf.dir}" prefix="WEB-INF">
+                <include name="*.xml" />
+                <exclude name="message.prop*" />
+                <include name="*.properties" />
+                <include name="jsp/**/*.jsp" />
+            	<include name="jsp/**/*.jsp" />
+            	<include name="jsp/**/*.xml" />
+            	<include name="jsp/**/*.txt" />
+                <include name="resources/**/*.xml" />
+                <include name="tlds/*.tld" />
+            	<include name="taglibs/*.tld" />
+            	<include name="lib/*.jar" />
+            </zipfileset>
+            
+            <zipfileset dir="${absolute.web.build.generated.xml.dir}" prefix="WEB-INF">
+                <include name="*.xml" />
+                <include name="*.tld" />
+            </zipfileset>
+        </war>
+    </target>
+</project>

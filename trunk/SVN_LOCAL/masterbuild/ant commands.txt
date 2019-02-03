@@ -1,0 +1,112 @@
+https://www.quora.com/How-can-I-export-the-project-in-Eclipse-to-a-GitHub-repository
+
+http://socialledge.com/sjsu/index.php/Eclipse_%26_Gitlab_Tutorial
+
+docker jboss
+
+docker microservices
+
+ant masterbuild.clean
+
+ant jboss.clean
+
+ant ear.deploy.ear.to.jboss
+
+ant jboss.start
+
+ant jboss.stop
+
+
+cd /Kejamart/workspace/Kejamart/trunk/SVN_LOCAL/masterbuild
+
+mysql -u root -p
+
+password: kendrick2018
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'kendrick2019';
+
+if
+
+Can't connect to local MySQL server through socket '/var/ru)
+
+solution
+
+sudo service mysql start
+
+Force Java 8
+===============
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get install oracle-java8-set-default
+
+on reboot
+**********
+sudo apt-get update && sudo apt-get dist-upgrade
+sudo apt-get install mysql-server
+
+Use MySQL5InnoDBDialect instead of MySQLInnoDBDialect.
+
+hostname
+hostname -f
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install mysql-server
+sudo mysql_secure_installation
+
+sudo apt-get install ant
+
+sudo apt-get remove ant
+
+download ant to /etc/
+
+tar xzvf apache-ant-1.7.0-bin.tar.gz
+
+unzip lib.zip -d /kejani/workspace
+
+unzip JBOSS.zip -d /kejani/project
+
+pscp D:/workspace/apache-ant-1.7.0-bin.tar.gz root@172.104.151.143:/kejani
+
+Windows cmd > pscp D:/workspace/Kejani/trunk/SVN_LOCAL/web/webroot/WEB-INF/jsp/searchx.jsp root@172.104.151.143:/kejani/workspace/Kejani/trunk/SVN_LOCAL/web/webroot/WEB-INF/jsp
+
+Windows cmd > pscp D:/workspace/Kejani/trunk/SVN_LOCAL/hibernate/src/squirrel/kejani/squirrel/kejani/squirrel/kejani/model/Alerts.java root@172.104.151.143:/kejani/workspace/Kejani/trunk/SVN_LOCAL/hibernate/src/squirrel/kejani/squirrel/kejani/squirrel/kejani/model
+
+Windows cmd > pscp D:/workspace/Kejani/trunk/SVN_LOCAL/dao/dao.xml root@172.104.151.143:/kejani/workspace/Kejani/trunk/SVN_LOCAL/dao
+
+Windows cmd > pscp D:/workspace/Kejani/trunk/SVN_LOCAL/hibernate/hibernate.xml root@172.104.151.143:/kejani/workspace/Kejani/trunk/SVN_LOCAL/hibernate
+
+Windows cmd > pscp D:/workspace/Kejani/trunk/SVN_LOCAL/web/web.xml root@172.104.151.143:/kejani/workspace/Kejani/trunk/SVN_LOCAL/web
+
+$ cd ~
+$ wget http://archive.apache.org/dist/ant/binaries/apache-ant-1.7.0-bin.tar.gz
+$ tar xvfvz apache-ant-1.8.4-bin.tar.gz
+$ sudo mv apache-ant-1.8.4-bin /opt/ant
+$ sudo sh -c 'echo ANT_HOME=/opt/ant >> /etc/environment'
+$ sudo ln -s /opt/ant/bin/ant /usr/bin/ant
+
+PATH=`echo $PATH | sed -e 's/:\/kejani\/ant\/bin\/$//'`
+
+PATH=`echo $PATH | sed -e 's/:\/kejani\/ant\/$//'`
+
+source /etc/environment && export PATH=$PATH:/kejani/ant/bin
+
+source /etc/environment && export PATH=$PATH:/kejani/JBOSS/bin
+
+
+export PATH=$PATH:/path/to/dir
+
+
+scp Kenz@192.168.0.12:D:/workspace/Kejani/trunk/SVN_LOCAL/web/webroot/WEB-INF/jsp/searchx.jsp /kejani/workspace/Kejani/trunk/SVN_LOCAL/web/webroot/WEB-INF/jsp
+
+scp Kenz@192.168.0.12:D:/workspace/Kejani/trunk/SVN_LOCAL/hibernate/src/squirrel/kejani/squirrel/kejani/squirrel/kejani/model/Alerts.java /kejani/workspace/Kejani/trunk/SVN_LOCAL/hibernate/src/squirrel/kejani/squirrel/kejani/squirrel/kejani/model
+
+
+set @@global.sql_mode = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+
+
+show tables;
+
+		// 0 = not published yet
+		// 1 = published
+		// 2 = classified
+commit;
+

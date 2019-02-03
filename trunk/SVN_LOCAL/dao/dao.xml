@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="dao" basedir=".">	
+	<path id="classpath.dao">
+		<pathelement location="." />
+		<fileset dir="${absolute.static.lib.dir}">
+			<include name="log4j/*.jar" />
+		</fileset>
+		<fileset dir="${absolute.static.lib.dir}">
+			<include name="hibernate/*.jar" />
+			<include name="spring/*.jar" />
+		</fileset>
+		<fileset dir="${absolute.hibernate.dist.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="dao.compile" depends="dao.make.dir, hibernate.create.jar" description="compile dao">
+		<javac destdir="${absolute.dao.build.classes.dir}" nowarn="${build.compiler.nowarn}" debug="${build.compiler.compile.with.debug}" compiler="${build.compiler}" source="${build.source}" target="${build.target}" includeantruntime="false">
+			<src path="${absolute.dao.src.dir}" />
+			<classpath>
+				<path refid="classpath.dao" />
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="dao.create.jar" depends="dao.compile" description="create dao jar">
+		<jar destfile="${absolute.dao.dao.jar.name}">
+			<fileset dir="${absolute.dao.build.classes.dir}">
+				<include name="**/*.class" />
+				<include name="**/*.xml" />
+			</fileset>
+			<fileset dir="${absolute.dao.src.dir}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+			</fileset>
+		</jar>
+	</target>	
+</project>

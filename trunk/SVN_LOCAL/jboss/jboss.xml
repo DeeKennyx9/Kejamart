@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="jboss" basedir="."> 
+    <target name="jboss.running.test">
+        <get src="http://${computer.name}:9090/index.html" 
+            dest="${absolute.appserver.home.dir}/bin/jboss.running.html" 
+            ignoreerrors="true"/>
+        <available file="${absolute.appserver.home.dir}/bin/jboss.running.html" 
+            property="jboss.running" value="true"/>
+        <delete file="${absolute.appserver.home.dir}/bin/jboss.running.html"/>
+    </target>
+
+    <!-- Stops the app server -->
+    <target name="jboss.stop" description="stop jboss">
+        <exec dir="D:/Project/JBOSS/bin" executable="cmd">
+            <!-- The shutdown.bat script pauses if this environmental variable is not set -->
+            <env key="NOPAUSE" value="true"/>
+            <arg line="/c shutdown.bat -S"/>
+        </exec>
+        <sleep seconds="2"/>
+    </target>
+
+    <!--
+        Before running this target, please copy ${absolute.appserver.home.dir}/bin/run.bat
+        to ${absolute.appserver.home.dir}/bin/run_debug.bat and uncomment line (by deleting REM):
+        rem set JAVA_OPTS=-classic -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y %JAVA_OPTS%
+    -->
+    <target name="jboss.start.debug" 
+        description="start jboss in debug mode">
+        <exec dir="${absolute.appserver.home.dir}/bin" executable="cmd">
+            <!-- The shutdown.bat script pauses if this environmental variable is not set -->
+            <env key="NOPAUSE" value="true"/>
+            <arg line="/c run_debug.bat"/>
+        </exec>
+    </target>
+
+    <target name="jboss.start" description="start jboss" 
+        depends="jboss.running.test">  
+
+        <delete file="${absolute.appserver.home.dir}/bin/jboss.running.html" 
+            failonerror="false"/>
+
+        <fail if="jboss.running" 
+            message="FAILED: Cannot start JBoss. JBoss is already running !!!!"/>
+
+        <exec dir="D:/Project/JBOSS/bin" executable="cmd" >
+            <!-- The shutdown.bat script pauses if this environmental variable is not set -->
+            <env key="NOPAUSE" value="true"/>
+            <arg line="/c run.bat -b 0.0.0.0"/>
+        </exec>
+    </target> 
+
+    <target name="jboss.clean" description="remove old deployments from jboss">
+        <delete includeEmptyDirs="true" verbose="true">
+            <fileset dir="D:/Project/JBOSS/server/default/deploy">
+                <include name="**/*.ear"/>
+                <include name="**/*.war"/>
+            </fileset>
+        </delete>
+        <delete dir="${absolute.appserver.home.dir}/server/${appserver.configuration}/tmp" verbose="true"/>
+        <delete dir="${absolute.appserver.home.dir}/server/${appserver.configuration}/work" verbose="true"/>
+    </target>
+</project>

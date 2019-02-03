@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="masterbuild" basedir=".">    
+    <target name="masterbuild.clean" description="delete BUILD_LOCAL directory">
+        <delete dir="${absolute.main.build.dir}"/>
+    </target>
+    <target name="masterbuild.build" 
+            description="build all source trees"
+            depends="dao.create.jar, hibernate.create.jar">           
+    </target>   
+</project>

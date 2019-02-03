@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="dao_properties" basedir=".">
+    <property name="dao.dir" value="dao"/>
+    <property name="absolute.dao.build.classes.dir" value="${absolute.main.build.dir}/${dao.dir}/${build.classes.dir}"/>
+    <property name="absolute.dao.dist.dir" value="${absolute.main.build.dir}/${dao.dir}/${dist.dir}"/>
+    <property name="absolute.dao.src.dir" value="${absolute.main.src.dir}/${dao.dir}/${src.dir}"/>
+    <property name="absolute.dao.dao.jar.name" value="${absolute.dao.dist.dir}/${dao.jar.name}"/>
+    <target name="dao.show.properties" description="show dao properties">
+        <echo>dao.dir=${dao.dir}</echo>
+        <echo>absolute.dao.build.classes.dir=${absolute.dao.build.classes.dir}</echo>
+        <echo>absolute.dao.dist.dir=${absolute.dao.dist.dir}</echo>
+        <echo>absolute.dao.src.dir=${absolute.dao.src.dir}</echo>
+        <echo>absolute.dao.dao.jar.name=${absolute.dao.dao.jar.name}</echo>
+    </target>
+</project>

@@ -1,0 +1,12 @@
+
+<html>
+    <body>
+        <h3>Hi ${profile.firstName}, </h3>
+        <br>Welcome to <a href="www.kejani.info">Kejani</a>.
+
+        <div>
+            Your email address is <a href="mailto:${profile.email}">${profile.email}</a>.
+        <br>Your password is ${profile.password}.
+        </div>
+    </body>
+</html>

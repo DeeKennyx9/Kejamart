@@ -1,0 +1,12 @@
+
+Property Details Procedure
+***************************
+
+1. Validate Documentation 
+2. Enter Property Details
+3. Update Main Property Picture
+4. Update Additional Property Pictures
+5. Update Property Resources
+6. Update Property Features
+
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd">
+  <tlib-version>1.0</tlib-version>
+  <short-name>core</short-name>
+  <uri>/WEB-INF/tlds/core</uri>
+  <tag>
+    <name>Exclude</name>
+    <tag-class>com.jjpeople.jjteach.web.tags.accesscontrol.Exclude</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <name>identity</name>
+      <required>true</required>
+      <type>java.lang.String</type>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>userRoles</name>
+      <rtexprvalue>true</rtexprvalue>
+      <required>true</required>
+      <type>java.lang.Long[]</type>
+    </attribute>
+  </tag>
+  <tag>
+    <name>Include</name>
+    <tag-class>com.jjpeople.jjteach.web.tags.accesscontrol.Include</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <name>identity</name>
+      <required>true</required>
+      <type>java.lang.String</type>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>userRoles</name>
+      <required>true</required>
+      <type>java.lang.Long[]</type>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+</taglib>

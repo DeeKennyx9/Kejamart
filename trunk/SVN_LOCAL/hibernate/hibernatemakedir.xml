@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="hibernate_make_directories" basedir="." default="info">
+    <target name="hibernate.make.dir">
+        <mkdir dir="${absolute.hibernate.build.classes.dir}"/>
+        <mkdir dir="${absolute.hibernate.dist.dir}"/>
+    </target>
+</project>

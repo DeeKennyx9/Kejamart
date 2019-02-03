@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="helpers" basedir="." default="info">
+    <path id="classpath.helpers">
+        <pathelement location="."/>
+        <fileset dir="${absolute.lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="helpers.compile" depends="helpers.make.dir"
+        description="compile helpers">
+        <javac destdir="${absolute.helpers.build.classes.dir}" 
+			nowarn="${build.compiler.nowarn}" 
+			debug="${build.compiler.compile.with.debug}" 
+			compiler="${build.compiler}">
+            <src path="${absolute.helpers.src.dir}"/>
+            <classpath>
+                <path refid="classpath.helpers"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="helpers.create.jar" depends="helpers.compile"
+        description="create helpers jar">
+        <jar destfile="${absolute.helpers.helpers.jar.name}">
+            <fileset dir="${absolute.helpers.build.classes.dir}">
+                <include name="**/*.class"/>
+                <include name="**/*.xml"/>
+            </fileset>
+            <fileset dir="${absolute.helpers.src.dir}">
+                <include name="**/*.xml"/>
+                <include name="**/*.properties"/>
+            </fileset>
+        </jar>
+    </target>
+</project>

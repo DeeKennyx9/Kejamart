@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="lib_properties" basedir=".">
+	<!-- We will be using an external lib source loacated outside the project
+	main folder -->
+    <property name="absolute.static.lib.dir" value="../../../../lib"/>        
+    <property name="absolute.static.lib.hibernate.dir" value="${absolute.static.lib.dir}/hibernate"/>
+    <property name="absolute.static.lib.junittest.dir" value="${absolute.static.lib.dir}/junit"/>
+    <property name="absolute.static.lib.log4j.dir" value="${absolute.static.lib.dir}/log4j"/>
+    <property name="absolute.static.lib.servlet.dir" value="${absolute.static.lib.dir}/servlet"/>
+    <property name="absolute.static.lib.spring.dir" value="${absolute.static.lib.dir}/spring"/>   
+    <property name="absolute.static.lib.struts.dir" value="${absolute.static.lib.dir}/struts"/>
+    <property name="absolute.static.lib.xdoclet.dir" value="${absolute.static.lib.dir}/xdoclet"/>
+                  
+    <target name="lib.show.static.lib.properties" description="show kejani lib properties">
+        <echo>absolute.static.lib.dir=${absolute.static.lib.dir}</echo>
+        <echo>absolute.static.lib.hibernate.dir=${absolute.static.lib.hibernate.dir}</echo>
+        <echo>absolute.static.lib.junittest.dir=${absolute.static.lib.junittest.dir}</echo>
+        <echo>absolute.static.lib.log4j.dir=${absolute.static.lib.log4j.dir}</echo>
+        <echo>absolute.static.lib.servlet.dir=${absolute.static.lib.servlet.dir}</echo>
+        <echo>absolute.static.lib.spring.dir=${absolute.static.lib.spring.dir}</echo>
+        <echo>absolute.static.lib.struts.dir=${absolute.static.lib.struts.dir}</echo>
+        <echo>absolute.static.lib.xdoclet.dir=${absolute.static.lib.xdoclet.dir}</echo>
+    </target>
+</project>

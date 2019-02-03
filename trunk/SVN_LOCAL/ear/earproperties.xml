@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="ear_properties" basedir="." default="info">
+
+    <property name="ear.dir" value="ear"/>
+    <property name="ear.src.meta-inf.dir" value="${ear.dir}/src/meta-inf"/>
+    
+    <property name="absolute.ear.jboss.deploy.name" 
+              value="${absolute.appserver.home.dir}/server/${appserver.configuration}/deploy/${ear.name}" />
+       
+    <property name="absolute.ear.dist.dir"
+              value="${absolute.main.build.dir}/${ear.dir}/dist"/>
+              
+    <property name="absolute.ear.dist.ear.name"
+              value="${absolute.ear.dist.dir}/${ear.name}"/>
+                                        
+    <property name="absolute.ear.src.meta-inf.application.xml.name"
+              value="${absolute.main.src.dir}/${ear.src.meta-inf.dir}/application.xml" />
+    
+    <target name="ear.show.properties" description="show kejani ear properties">
+    	   <echo>${absolute.main.build.dir}</echo>
+         <echo>ear.dir=${ear.dir}</echo>
+         <echo>ear.src.meta-inf.dir=${ear.src.meta-inf.dir}</echo>
+         <echo>absolute.ear.jboss.deploy.name=${absolute.ear.jboss.deploy.name}</echo>
+         <echo>absolute.ear.dist.dir=${absolute.ear.dist.dir}</echo>
+         <echo>absolute.ear.dist.ear.name=${absolute.ear.dist.ear.name}</echo>
+         <echo>absolute.ear.src.meta-inf.application.xml.name=${absolute.ear.src.meta-inf.application.xml.name}</echo>
+    </target>
+</project>
