@@ -165,18 +165,24 @@ public class ViewPicController implements Settings {
 		// validate cell number and email
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(result, "namex", "Please insert your name.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(result, "cell", "Please insert your phone number.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(result, "emailx", "Please insert your email.");
+		//ValidationUtils.rejectIfEmptyOrWhitespace(result, "cell", "Please insert your phone number.");
+		//ValidationUtils.rejectIfEmptyOrWhitespace(result, "emailx", "Please insert your email.");
 		
-		if (eb == false) {
-			result.rejectValue("emailx", "Invalid email address");
-			System.out.println("Invalid email address");
+		if (emailx == "") {	
+			result.rejectValue("emailx", "Please insert your email.");
+			System.out.println("Please insert your email.");	
+		} else if (eb == false) {
+			result.rejectValue("emailx", "Invalid email address.");
+			System.out.println("Invalid email address.");
 		}
 
-		if (mobz == false) {
-			result.rejectValue("cell", "Invalid phone number");
-			System.out.println("Invalid phone number");
-		}		
+		if (cell == null) {
+			result.rejectValue("emailx", "Please insert your phone number.");
+			System.out.println("Please insert your phone number.");			
+		} else if (mobz == false) {
+			result.rejectValue("cell", "Invalid phone number.");
+			System.out.println("Invalid phone number.");	
+		}	
 		
 		if(!result.hasErrors()){
 			
