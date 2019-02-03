@@ -1,6 +1,5 @@
 package kejamart.dao;
 
-import kejamart.model.LoginForm;
 import kejamart.model.Profile;
 
 public interface LogDAO{

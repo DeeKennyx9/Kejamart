@@ -5,12 +5,6 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
-
-import kejamart.dao.ProfileDAO;
 import kejamart.model.Profile;
 
 	public class ProfileDAOImpl extends HibernateDaoSupport implements ProfileDAO {

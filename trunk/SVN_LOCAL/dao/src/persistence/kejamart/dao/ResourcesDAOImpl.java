@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import kejamart.dao.ResourcesDAO;
-import kejamart.model.PropertyPics;
 import kejamart.model.Resources;
 
 	public class ResourcesDAOImpl extends HibernateDaoSupport implements ResourcesDAO {

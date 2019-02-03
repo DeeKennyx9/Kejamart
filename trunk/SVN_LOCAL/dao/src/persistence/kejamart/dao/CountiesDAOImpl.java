@@ -4,11 +4,7 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import kejamart.dao.CountiesDAO;
 import kejamart.model.Counties;
-import kejamart.model.Locations;
-import kejamart.model.Profile;
-import kejamart.model.Property;
 
 	public class CountiesDAOImpl extends HibernateDaoSupport implements CountiesDAO {
 		

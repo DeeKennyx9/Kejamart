@@ -2,6 +2,8 @@ https://www.quora.com/How-can-I-export-the-project-in-Eclipse-to-a-GitHub-reposi
 
 http://socialledge.com/sjsu/index.php/Eclipse_%26_Gitlab_Tutorial
 
+https://superuser.com/questions/423792/how-to-push-an-existing-eclipse-project-to-github
+
 docker jboss
 
 docker microservices

@@ -4,10 +4,7 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import kejamart.dao.AdvertDAO;
 import kejamart.model.Adverts;
-import kejamart.model.Property;
-import kejamart.model.PropertyPics;
 
 	public class AdvertDAOImpl extends HibernateDaoSupport implements AdvertDAO {
 		

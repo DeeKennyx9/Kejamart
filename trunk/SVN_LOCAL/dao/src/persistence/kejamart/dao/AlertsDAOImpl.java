@@ -1,14 +1,10 @@
 package kejamart.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import kejamart.model.Adverts;
 import kejamart.model.Alerts;
-import kejamart.model.Messages;
-import kejamart.model.Property;
 
 	public class AlertsDAOImpl extends HibernateDaoSupport implements AlertsDAO {
 

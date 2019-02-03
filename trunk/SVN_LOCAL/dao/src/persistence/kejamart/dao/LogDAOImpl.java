@@ -1,14 +1,11 @@
 package kejamart.dao;
 
-import kejamart.model.LoginForm;
-import kejamart.model.Profile;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import kejamart.dao.LogDAO;
-
-import java.util.List;
+import kejamart.model.Profile;
 
 public class LogDAOImpl extends HibernateDaoSupport implements LogDAO{
 

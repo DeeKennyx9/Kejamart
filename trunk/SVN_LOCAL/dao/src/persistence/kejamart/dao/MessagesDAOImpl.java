@@ -4,10 +4,7 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import kejamart.dao.MessagesDAO;
-import kejamart.model.Alerts;
 import kejamart.model.Messages;
-import kejamart.model.PropertyPics;
 
 	public class MessagesDAOImpl extends HibernateDaoSupport implements MessagesDAO {
 		
