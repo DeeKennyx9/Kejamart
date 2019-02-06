@@ -136,6 +136,8 @@ var contexPath = "<%=request.getContextPath() %>";
   
   <div class="maincover">
   <div class="propcover">
+  
+  <div class="resultsearch">${HackMsg}</div>
    
   <div class="detailsdiv">
     <c:if test="${!empty props}">

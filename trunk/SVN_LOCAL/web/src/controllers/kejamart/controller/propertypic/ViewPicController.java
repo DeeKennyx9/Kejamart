@@ -66,6 +66,12 @@ public class ViewPicController implements Settings {
 			
 			int idValue = 0;
 			idValue = id;
+			
+			List<Property> hack = propertyDAO.getPropertyForId(id);
+			System.out.println("Hack Listener " +hack.size());
+			
+			if (hack.listIterator().hasNext() == true) {
+			
 			request.getSession().setAttribute(PROPERTY_DETAILS, idValue);
 			
 			int viewValue = 0;
@@ -117,6 +123,15 @@ public class ViewPicController implements Settings {
 			modelAndView.addObject("proPics", proPics);
 			modelAndView.addObject("feats", feats);
 			modelAndView.addObject("recs", recs);
+			
+			} else {
+				
+			String HackMsg = "Unauthorized action";
+			System.out.println();
+			
+			modelAndView.addObject("HackMsg", HackMsg);	
+				
+			}			
 			
 			return modelAndView;
 			
