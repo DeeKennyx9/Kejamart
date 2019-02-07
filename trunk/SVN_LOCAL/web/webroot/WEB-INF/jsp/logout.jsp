@@ -37,8 +37,7 @@
 	<link href="color/default.css" rel="stylesheet">
 	<link href="css/app.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	  <link rel = "shortcut icon" href="img/logox.png"/>
-
+	<link rel = "shortcut icon" href="img/logox.png"/>
 
 </head>
 
@@ -51,11 +50,9 @@
                                                    <div class="site-logo">
                                                             <a href="search.html" class="navbar-brand"></a>
                                                     </div>
-                                          </div>
-                                          
+                                          </div>                              
 
-                                          <div class="col-md-10">
-                         
+                                          <div class="col-md-10">                         
                                                       <!-- Brand and toggle get grouped for better mobile display -->
                                           <div class="navbar-header">
                                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
